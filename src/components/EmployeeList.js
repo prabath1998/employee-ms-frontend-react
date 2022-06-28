@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import EmployeeService from "../services/EmployeeService";
 
 const EmployeeList = () => {
 
 
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+    const [employees, setEmployees] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async() => {
+            setLoading(true);
+            try {
+                const response =await EmployeeService.getEmployees();
+                setEmployees(response.data);
+                
+            } catch (error) {
+                console.log(error);
+            }
+            setLoading(false);
+        };
+        fetchData();
+    }, [])
+    
 
 
   return (
