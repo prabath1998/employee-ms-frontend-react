@@ -47,6 +47,7 @@ const EmployeeList = () => {
             </thead>
             {!loading && (
                     <tbody className="bg-white">
+                        {employees.map((employee)=>(
                     <tr>
                         <td className="text-left px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-500">Prabath</div>
@@ -61,6 +62,7 @@ const EmployeeList = () => {
                             <a href="#" className="text-red-600 hover:text-red-800">Delete</a>
                         </td>
                     </tr>
+                    ))}
                 </tbody>
             )}
         
