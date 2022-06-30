@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import EmployeeService from "../services/EmployeeService";
 
 const UpdateEmployee = () => {
-  const [id] = useParams();
+  const {id} = useParams();
   const [employee, setEmployee] = useState({
     id: id,
     firstName: "",
@@ -12,10 +13,21 @@ const UpdateEmployee = () => {
 
   const handleChange = (e) => {
     const value = e.target.value;
+    
     setEmployee({ ...employee, [e.target.name]: value });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const response = await EmployeeService.getEmployeeById(id);
+        setEmployee(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const updateEmployee = (e) => {
     e.preventDefault();
