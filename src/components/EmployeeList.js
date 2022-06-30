@@ -53,7 +53,7 @@ const EmployeeList = () => {
           {!loading && (
             <tbody className="bg-white">
               {employees.map((employee) => (
-               <Employee employee={employee}></Employee>
+               <Employee employee={employee} key={employee.id}></Employee>
               ))}
             </tbody>
           )}
