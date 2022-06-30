@@ -27,6 +27,18 @@ const AddEmployee = () => {
     })
   }
 
+  const reset = (e) =>{
+    e.preventDefault(); 
+    setEmployee(
+      {
+        id: "",
+        firstName: "",
+        lastName: "",
+        emailId: "",
+      }
+    );
+  }
+
   return (
     <div className="flex max-w-2xl shadow border-b mx-auto">
       <div className="px-8 py-8">
@@ -74,7 +86,7 @@ const AddEmployee = () => {
           <button className="rounded text-white font-semibold bg-green-400 py-2 px-6 hover:bg-green-700" onClick={saveEmployee}>
             Save
           </button>
-          <button className="rounded text-white font-semibold bg-red-400 py-2 px-6 hover:bg-red-700">
+          <button onClick={reset} className="rounded text-white font-semibold bg-red-400 py-2 px-6 hover:bg-red-700">
             Clear
           </button>
         </div>
